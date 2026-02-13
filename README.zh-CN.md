@@ -2,6 +2,8 @@
 
 **[English](README.md)** | 中文
 
+![Claude Model Switcher](claude-model-switcher.jpg)
+
 macOS 原生应用，用于快速切换 Claude Code 使用的模型，替代手动编辑配置文件的繁琐操作。
 
 ## 功能

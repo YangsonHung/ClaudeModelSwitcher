@@ -2,6 +2,8 @@
 
 **English** | [中文](README.zh-CN.md)
 
+![Claude Model Switcher](claude-model-switcher.jpg)
+
 A native macOS application for quickly switching the Claude Code model, eliminating the need to manually edit configuration files.
 
 ## Features
