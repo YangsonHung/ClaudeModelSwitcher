@@ -1,92 +1,94 @@
 # Claude Model Switcher
 
-macOS 原生应用，用于快速切换 Claude Code 使用的模型，替代手动编辑配置文件的繁琐操作。
+**English** | [中文](README.zh-CN.md)
 
-## 功能
+A native macOS application for quickly switching the Claude Code model, eliminating the need to manually edit configuration files.
 
-- **菜单栏快速切换**: 点击菜单栏图标快速切换收藏的模型
-- **主窗口管理**: 完整的模型列表管理，支持添加/编辑/删除自定义模型
-- **收藏功能**: 将常用模型添加到收藏，显示在菜单栏快捷菜单中
-- **双击切换**: 双击左侧模型列表可快速切换模型
+## Features
 
-## 运行方式
+- **Menu Bar Quick Switch**: Click the menu bar icon to quickly switch between favorite models
+- **Main Window Management**: Full model list management with support for adding/editing/deleting custom models
+- **Favorites**: Add frequently used models to favorites, displayed in the menu bar quick menu
+- **Double-Click Switch**: Double-click a model in the left list to quickly switch models
 
-### 方式 1: 直接运行应用
+## How to Run
+
+### Option 1: Run the App Directly
 ```bash
-cd /Users/yangsonhung/Projects/personal/test-pony/ClaudeModelSwitcher
+cd /Users/yangsonhung/Projects/personal/ClaudeModelSwitcher
 open "Claude Model Switcher.app"
 ```
 
-### 方式 2: 使用构建脚本
+### Option 2: Use Build Script
 ```bash
-cd /Users/yangsonhung/Projects/personal/test-pony/ClaudeModelSwitcher
-./build.sh run      # 运行
-./build.sh build    # 构建
-./build.sh all      # 构建并运行
-./build.sh clean    # 清理构建文件
+cd /Users/yangsonhung/Projects/personal/ClaudeModelSwitcher
+./build.sh run      # Run
+./build.sh build    # Build
+./build.sh all      # Build and run
+./build.sh clean    # Clean build files
 ```
 
-### 方式 3: 通过 Xcode
+### Option 3: Via Xcode
 ```bash
-cd /Users/yangsonhung/Projects/personal/test-pony/ClaudeModelSwitcher
+cd /Users/yangsonhung/Projects/personal/ClaudeModelSwitcher
 open ClaudeModelSwitcher.xcodeproj
-# 然后按 Cmd+R 运行
+# Press Cmd+R to run
 ```
 
-### 方式 4: 使用 xcodebuild
+### Option 4: Using xcodebuild
 ```bash
-cd /Users/yangsonhung/Projects/personal/test-pony/ClaudeModelSwitcher
+cd /Users/yangsonhung/Projects/personal/ClaudeModelSwitcher
 xcodebuild -project ClaudeModelSwitcher.xcodeproj -scheme ClaudeModelSwitcher -configuration Release build && open ~/Library/Developer/Xcode/DerivedData/ClaudeModelSwitcher-*/Build/Products/Release/Claude\ Model\ Switcher.app
 ```
 
-## 使用说明
+## Usage
 
-1. **菜单栏操作**: 点击右上角菜单栏的大脑图标，选择模型快速切换
-2. **主窗口操作**: 点击 Dock 图标或在菜单栏选择"管理模型..."打开主窗口
-3. **收藏模型**: 在主窗口中选择模型，点击"添加收藏"按钮
-4. **添加自定义模型**: 点击左上角 + 按钮添加自定义模型
+1. **Menu Bar**: Click the brain icon in the top-right menu bar and select a model to switch
+2. **Main Window**: Click the Dock icon or select "Manage Models..." from the menu bar to open the main window
+3. **Favorite Models**: Select a model in the main window and click "Add to Favorites"
+4. **Add Custom Model**: Click the + button in the top-left to add a custom model
 
-## 系统要求
+## System Requirements
 
 - macOS 14.0+ (Sonoma)
 
-## 配置文件
+## Configuration File
 
-应用会修改 `~/.claude/settings.json` 中的以下字段：
+The app modifies the following fields in `~/.claude/settings.json`:
 - `ANTHROPIC_MODEL`
 - `ANTHROPIC_DEFAULT_SONNET_MODEL`
 - `ANTHROPIC_DEFAULT_HAIKU_MODEL`
 - `ANTHROPIC_DEFAULT_OPUS_MODEL`
 - `ANTHROPIC_REASONING_MODEL`
 
-## 开发
+## Development
 
-### 项目结构
+### Project Structure
 ```
 ClaudeModelSwitcher/
 ├── Sources/
-│   ├── ClaudeModelSwitcherApp.swift   # App 入口
+│   ├── ClaudeModelSwitcherApp.swift   # App entry point
 │   ├── Models/
-│   │   ├── ClaudeSettings.swift       # 配置数据模型
-│   │   └── ModelProfile.swift         # 模型配置模板
+│   │   ├── ClaudeSettings.swift       # Configuration data model
+│   │   └── ModelProfile.swift         # Model profile template
 │   ├── ViewModels/
-│   │   └── SettingsViewModel.swift    # 业务逻辑
+│   │   └── SettingsViewModel.swift    # Business logic
 │   ├── Views/
-│   │   ├── MainWindow.swift           # 主窗口
-│   │   ├── MenuBarView.swift          # 菜单栏视图
-│   │   ├── ModelEditView.swift        # 模型编辑
-│   │   └── SettingsView.swift         # 设置页面
+│   │   ├── MainWindow.swift           # Main window
+│   │   ├── MenuBarView.swift          # Menu bar view
+│   │   ├── ModelEditView.swift        # Model editing
+│   │   └── SettingsView.swift         # Settings page
 │   └── Services/
-│       └── SettingsService.swift      # 文件读写服务
-├── Claude Model Switcher.app          # 已构建的应用
-├── ClaudeModelSwitcher.xcodeproj      # Xcode 项目
-├── project.yml                        # XcodeGen 配置
-└── build.sh                           # 构建脚本
+│       └── SettingsService.swift      # File I/O service
+├── Claude Model Switcher.app          # Built application
+├── ClaudeModelSwitcher.xcodeproj      # Xcode project
+├── project.yml                        # XcodeGen configuration
+└── build.sh                           # Build script
 ```
 
-### 依赖
+### Dependencies
 
-- [XcodeGen](https://github.com/yonaskolb/XcodeGen): 用于生成 Xcode 项目
+- [XcodeGen](https://github.com/yonaskolb/XcodeGen): Used to generate Xcode projects
   ```bash
   brew install xcodegen
   ```
